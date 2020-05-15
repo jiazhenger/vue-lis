@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 import './element-variables.scss'
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 }
 /* plugin */
-import '@plugins/public'
+import '@plugins/msg'
 /* 启动 */
 window.Vue = Vue
 window.V = new Vue({

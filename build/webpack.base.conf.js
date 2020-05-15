@@ -41,12 +41,12 @@ module.exports = {
       '@com': resolve('src/common')
     }
   },
-  externals: {
-    'element-ui': 'ELEMENT',
-    'vue': 'Vue',
-    'vue-router': 'VueRouter',
-    'axios':'axios',
-  },
+  // externals: {
+  //   'element-ui': 'ELEMENT',
+  //   'vue': 'Vue',
+  //   'vue-router': 'VueRouter',
+  //   'axios':'axios',
+  // },
   module: {
     rules: [
       {

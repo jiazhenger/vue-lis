@@ -11,8 +11,8 @@
 
 <script>
 	// ================================================================ element-ui
-	import { Button } from 'element-ui'
-	Vue.use(Button)
+	import { Checkbox } from 'element-ui'
+	Vue.use(Checkbox)
 	// ================================================================  class
 	export default {
 		model:{

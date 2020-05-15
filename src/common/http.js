@@ -161,8 +161,8 @@ const submit = (_this,api,option)=>{
 	opt.loading && $fn.loading(true,opt.loadingText)
 	
 	const run = ()=>{
-		opt.replace && V.$router.replace(opt.replace);
-		opt.push && V.$router.push(opt.push)
+		opt.replace && _this.$router.replace(opt.replace);
+		opt.push && _this.$router.push(opt.push)
 		opt.succeedFn && opt.succeedFn()
 	}
 	
