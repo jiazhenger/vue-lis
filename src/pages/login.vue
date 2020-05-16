@@ -9,7 +9,7 @@
 					<h6 class='f16 g9 mt15'>致力于做民众身边的健康管理专家</h6>
 				</hgroup>
 				<!-- form -->
-				<el-form ref='form' :model='model' :rules='rules' @submit.prevent='submit' style='width:300px;min-height:225px'>
+				<el-form class='login-form' ref='form' :model='model' :rules='rules' @submit.prevent='submit' style='width:300px;min-height:225px'>
 					<FormItem prop='company'>
 						<Select ref='select' v-model='model.company' class='w login-select' p='选择分公司' :disabled='submitLoading' :size='size' :data='data' labelStr='company_name' valueStr='uuid'/>
 					</FormItem>
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+    // ================================================================ plugins
+    const $msg = import('@pls/msg')
 	// ================================================================ element-ui
 	import Encrypt from '@com/encrypt'
 	import { Form } from 'element-ui'
@@ -52,7 +54,6 @@
 	import ImgLogo from '@images/login/logo.png'
 	// ================================================================ class
 	export default {
-		name: 'login',
 		components:{
 			Select: 	() => import('@cpt/ui/select'),
 			FormItem: 	() => import('@cpt/ui/form-item'),
@@ -102,7 +103,7 @@
 							if($fn.hasObject(data)){
 								$fn.local('user',data)
 								$http.submit(this,'employee/currentuser',{dataName:null}).then(rs=>{
-									this.$msg('登录成功')
+                                    $msg.then(f => f('登录成功') )
 									if( $fn.hasObject(rs)){ $fn.local('user',{...data,...rs}) }
 
 									// 记住密码
@@ -119,7 +120,7 @@
 							}
 						})
 					}else{
-						this.$msg('登录验证不通过',0)
+                        $msg.then(f => f('登录验证不通过'), 0 )
 					}
 				})
 			},
