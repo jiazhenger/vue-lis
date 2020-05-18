@@ -63,7 +63,7 @@
 		components:{
 			Img: 		() => import('@cpx/img'),
 			Content: 	() => import('@cpx/content'),
-			User: 		() => import('@cpt/user'),
+			User: 		() => import('@tp/user'),
 		},
 		data(){
 			return {

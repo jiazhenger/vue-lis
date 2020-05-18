@@ -36,6 +36,7 @@ module.exports = {
       '@pls': resolve('src/plugins'),
       '@cpt': resolve('src/components'),
       '@tp': resolve('src/components/template'),
+      '@eu': resolve('src/components/element-ui'),
       '@cpx': resolve('src/components-x'),
       '@vuex': resolve('src/vuex'),
       '@com': resolve('src/common')

@@ -55,11 +55,11 @@
 	// ================================================================ class
 	export default {
 		components:{
-			Select: 	() => import('@cpt/ui/select'),
-			FormItem: 	() => import('@cpt/ui/form-item'),
-			Input: 		() => import('@cpt/ui/input'),
-			Button: 	() => import('@cpt/ui/button'),
-			Checkbox: 	() => import('@cpt/ui/checkbox'),
+			Select: 	() => import('@eu/select'),
+			FormItem: 	() => import('@eu/form-item'),
+			Input: 		() => import('@eu/input'),
+			Button: 	() => import('@eu/button'),
+			Checkbox: 	() => import('@eu/checkbox'),
 			Img: 		() => import('@cpx/img'),
 		},
 		data(){
