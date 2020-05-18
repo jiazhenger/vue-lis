@@ -56,17 +56,15 @@ export default {
 		SessionStorage.remove(sname);
 	},
 	localPer(name,data){
-		let sname =  name || 'remember';
 		if(this.isValid(data)){
-			LocalStorage.set(sname,data);
+			LocalStorage.set(name,data);
 		}else {
-			let gname = LocalStorage.get(sname);
+			let gname = LocalStorage.get(name);
 			return gname;
 		}
 	},
 	removePer(name){
-		let sname =  name || 'user';
-		LocalStorage.remove(sname);
+		LocalStorage.remove(name);
 	},
 	// 绑定值
 	val(v){return this.isValid(v) ? v : '--'},
@@ -93,7 +91,7 @@ export default {
 		let token = this.getQuery('token');
 		let user = this.getUser();
 		let rs = null
-		
+
 		if(token){
 			rs = token
 		}else if(user.token){
@@ -110,6 +108,14 @@ export default {
 			return {}
 		}
 	},
+    // ======================================================================== 调用异步加载方法
+    async asy(p){
+        let m = ()=>{}
+        await p.then( f => {
+            m = f
+        })
+        return m
+    },
 	// ======================================================================== 登录后跳转
 	loginTo(flag){
 		if(flag){
@@ -122,5 +128,13 @@ export default {
 		}else{
 			this.local('loginToPage',encodeURIComponent(window.location.hash))
 		}
+	},
+	getValid(v){
+		for(var i in v){
+			if(!$fn.isValid(v[i])){
+				delete v[i]
+			}
+		}
+		return v
 	}
 }
