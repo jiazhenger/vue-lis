@@ -43,15 +43,13 @@
 </template>
 
 <script>
-    // ================================================================ plugins
-    const $msg = import('@pls/msg')
-	// ================================================================ element-ui
-	import Encrypt from '@com/encrypt'
-	import { Form } from 'element-ui'
-	Vue.use(Form)
-	// ================================================================ 加载图片
-	import ImgBg from '@images/login/bg.jpg'
-	import ImgLogo from '@images/login/logo.png'
+    // ================================================================ element-ui
+    import Encrypt from '@com/encrypt'
+    // ================================================================ 二次封装 element-ui
+    const $msg = import('@eu/js/msg')
+    // ================================================================ 加载图片
+    import ImgBg from '@img/login/bg.jpg'
+    import ImgLogo from '@img/login/logo.png'
 	// ================================================================ class
 	export default {
 		components:{
@@ -102,7 +100,7 @@
 						}).then(data=>{
 							if($fn.hasObject(data)){
 								$fn.local('user',data)
-								$http.submit(this,'employee/currentuser',{dataName:null}).then(rs=>{
+								$http.pull(this,'employee/currentuser',{dataName:null}).then(rs=>{
                                     $msg.then(f => f('登录成功') )
 									if( $fn.hasObject(rs)){ $fn.local('user',{...data,...rs}) }
 
@@ -120,7 +118,7 @@
 							}
 						})
 					}else{
-                        $msg.then(f => f('登录验证不通过'), 0 )
+                        $msg.then(f => f('登录验证不通过', 0) )
 					}
 				})
 			},

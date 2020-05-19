@@ -1,4 +1,4 @@
-<template>  
+<template>
 	<el-container class='wh' style='background:#e8f0f6;'>
 		<!-- 左侧 -->
 		<el-aside class='fv' width='180px'>
@@ -15,7 +15,7 @@
 			<!-- menu -->
 			<el-menu class='ex' v-if='fn.hasArray(data)' id='vertial-menu' :collapse='collapse'>
 				<template v-for='(v,i) in data'>
-					<el-submenu :index='i'>
+					<el-submenu :index='i.toString()'>
 						<template slot='title'><i class='m-ico el-icon-menu'></i><span>{{v.title}}</span></template>
 						<el-menu-item-group>
 							<template v-for='(p,j) in v.children'>
@@ -55,8 +55,19 @@
 </template>
 
 <script>
+    // ================================================================ element-ui
+    import { Container, Aside, Menu, Submenu, MenuItemGroup, MenuItem } from 'element-ui'
+    Vue.use(Container)
+    Vue.use(Aside)
+    Vue.use(Menu)
+    Vue.use(Submenu)
+    Vue.use(MenuItemGroup)
+    Vue.use(MenuItem)
+    // ================================================================ 二次封装 element-ui
+    const $msg = import('@eu/js/msg')
+    const $confirm = import('@eu/js/confirm')
 	// ================================================================ 加载图片
-	import ImgLogo from '@images/frame/logo.png'
+	import ImgLogo from '@img/frame/logo.png'
 	// ================================================================ 自定义模板
 	Vue.component('NavItem', {
         template: `
@@ -73,7 +84,7 @@
 	export default {
 		components:{
 			Img: 		() => import('@cpx/img'),
-			User: 		() => import('@cpt/user'),
+			User: 		() => import('@tp/user'),
 		},
 		props:{
 			title : String,
@@ -85,16 +96,16 @@
 				ImgLogo,
 				data: [],
 				collapse:false,
-				activeIndex: 0
+				activeIndex: '0'
 			}
 		},
 		mounted(){
 			// 首次加载时，获取当前菜单选中项、左侧菜单列表数据
 			const hash = location.hash.replace('#','')
 			const arr = this.menu.filter(v => hash.indexOf(v.route) >= 0)
-			if($fn.hasArray(arr)){ 
+			if($fn.hasArray(arr)){
 				this.activeIndex = arr[0].route
-				this.data = arr[0].data 
+				this.data = arr[0].data
 			}
 		},
 		methods:{
@@ -107,16 +118,18 @@
 			},
 			// 退出登录
 			logout(){
-				this.$confirm('确认退出登录?', '提示', {
-		        	confirmButtonText: '退出登录',
-		       		cancelButtonText: '取消',
-		        	type: 'warning'
-		        }).then(data=>{
-		        	$http.submit(this,'index/logout',{dataName:null,loading:true,replace:'/login',loadingText:'退出登录中'}).then(data=>{
-		        		$fn.remove()
-		        		this.$msg('您已退出登录')
-		        	})
-		        }).catch(action=>{})
+                $confirm.then(f=>{
+                    f('确认退出登录?', '提示', {
+                        confirmButtonText: '退出登录',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(data=>{
+                        $http.submit(this,'index/logout',{dataName:null,loading:true,replace:'/login',loadingText:'退出登录中'}).then(data=>{
+                            $fn.remove()
+                            $msg.then(f=>f('您已退出登录'))
+                        })
+                    }).catch(action=>{})
+                })
 			}
 		}
 	}

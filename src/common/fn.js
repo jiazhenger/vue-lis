@@ -2,7 +2,7 @@
 import LocalStorage from './localStorage'
 import SessionStorage from './sessionStorage'
 export default {
-	c0:'#3295c4',
+	c0:'#409EFF',
 	regPhone:/^1[0-9]{10}$/,
 	// ========================================================================  判断数据类型
 	// 判断数据是否是对象 {}
@@ -108,6 +108,14 @@ export default {
 			return {}
 		}
 	},
+    // ======================================================================== 调用异步加载方法
+    async asy(p){
+        let m = ()=>{}
+        await p.then( f => {
+            m = f
+        })
+        return m
+    },
 	// ======================================================================== 登录后跳转
 	loginTo(flag){
 		if(flag){

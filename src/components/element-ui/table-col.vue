@@ -1,12 +1,14 @@
 <template>
-	<el-table-column
-		:prop	= 'prop'
-		:label	= 'label'
-		:width	= 'width'
-		:type 	= 'type'
-		:align  = 'align'
-		:fixed	= 'fixed'
-	/>
+    <el-table-column
+        :prop	= 'prop'
+        :label	= 'label'
+        :width	= 'width'
+        :type 	= 'type'
+        :align  = 'align'
+        :fixed	= 'fixed'
+    >
+       <slot></slot>
+    </el-table-column>
 </template>
 
 <script>
@@ -21,7 +23,8 @@
 			width	: String,
 			type	: String,
 			align	: String,
-			fixed	: Boolean
+			fixed	: Boolean,
+            scope   : Boolean
 		}
 	}
 </script>

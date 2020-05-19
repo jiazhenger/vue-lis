@@ -1,8 +1,8 @@
+/* 模块 */
+import Vue from 'vue'
 /* 全局 */
 import '@com/global.js'
 import '@css/public.css'
-/* 模块 */
-import Vue from 'vue'
 /* 入口模块 */
 import App from './App'
 /* 路由 */
@@ -12,8 +12,8 @@ Vue.config.productionTip = false
 /* element-ui 配置 */
 import './element-variables.scss'
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 }
-/* plugin */
-import '@plugins/msg'
+import { Form } from 'element-ui'
+Vue.use(Form)
 /* 启动 */
 window.Vue = Vue
 window.V = new Vue({

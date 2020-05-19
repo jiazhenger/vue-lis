@@ -1,8 +1,7 @@
-<template>  
-	<el-dialog
-    class           = 'packging-el-dialog'
-		:title					= 'title' 
-		:visible.sync 			= 'show' 
+<template>
+  <el-dialog
+		:title					= 'title'
+		:visible.sync 			= 'show'
 		:close-on-click-modal	='false'
 		:width 					= 'width'
 		top						= '0'
@@ -25,11 +24,11 @@
 		},
 		data(){
 			return {
-				show:false
+				show:true
 			}
 		},
 		mounted(){
-			
+
 		},
 		methods:{
 			open(){ this.show = true },

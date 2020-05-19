@@ -15,7 +15,7 @@
 			<menu class='fxw xj' style='width:500px;margin:0 auto'>
 				<MenuItem title='实验室系统'	:ico='ImgN1'	color='#5CB8E8' link='/main/laboratory/testCenter' 	isSpace />
 				<MenuItem title='物流系统' 	:ico='ImgN2' 	color='#FFBC00' link='/main/logistics'	isSpace />
-				<MenuItem title='管理员系统' 	:ico='ImgN3' 	color='#7179F2' link='/main/admin' />
+				<MenuItem title='管理员系统' :ico='ImgN3' 	color='#7179F2' link='/main/admin' />
 				<MenuItem title='业务系统' 	:ico='ImgN4' 	color='#13AE60' link='/main/business'	isSpace />
 				<MenuItem title='客服系统' 	:ico='ImgN5' 	color='#5675BC' link='/main/service' 	isSpace />
 				<MenuItem title='财物系统' 	:ico='ImgN6' 	color='#FD8442' link='/main/financing'/>
@@ -35,17 +35,17 @@
 
 <script>
 	// ================================================================ 加载图片
-	import ImgLogo from '@images/index/logo.png'
-	import ImgN1 from '@images/index/n-1.png'
-	import ImgN2 from '@images/index/n-2.png'
-	import ImgN3 from '@images/index/n-3.png'
-	import ImgN4 from '@images/index/n-4.png'
-	import ImgN5 from '@images/index/n-5.png'
-	import ImgN6 from '@images/index/n-6.png'
+	import ImgLogo from '@img/index/logo.png'
+	import ImgN1 from '@img/index/n-1.png'
+	import ImgN2 from '@img/index/n-2.png'
+	import ImgN3 from '@img/index/n-3.png'
+	import ImgN4 from '@img/index/n-4.png'
+	import ImgN5 from '@img/index/n-5.png'
+	import ImgN6 from '@img/index/n-6.png'
 	// ================================================================ 自定义模板
 	Vue.component('MenuItem', {
         template: `
-        	<li class='bor1 r10px fxm mb50 tap cp' @click='V.$router.push(link)' style='width:120px;height:120px;box-shadow:0px 1px 6px rgba(0,0,0,0.1)' :style="{marginRight:isSpace?'70px':'0'}">
+        	<li class='bor1 r10px fxm mb50 tap cp' @click='$router.push(link)' style='width:120px;height:120px;box-shadow:0px 1px 6px rgba(0,0,0,0.1)' :style="{marginRight:isSpace?'70px':'0'}">
         		<div class='w'>
         			<Img :src='ico' width='35px'/>
         			<h3 class='tc f18 mt15' :style='{color:color}'>{{title}}</h3>
