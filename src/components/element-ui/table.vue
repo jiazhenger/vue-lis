@@ -42,7 +42,7 @@
 			height		: Number,
 			mh			: { type:String, default:'90px' },
 			emptyText	: { type:String, default:'暂无数据' },
-            border		: { type:Boolean, default:true },
+            border		: { type:Boolean, default:false },
 		},
 		data(){
 			return {

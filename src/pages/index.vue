@@ -1,7 +1,7 @@
 <template>
 	<Content contentClass='pt20 fv wh' scrollXY mw='700px'>
 		<!-- 消息 -->
-		<header>
+		<header @click='open'>
 			<div class='bor1 r100px fxm plr25' style='margin:0 10%;height:60px'>
 				<div class='bcm r100px fxmc' style='width:24px;height:24px;'><i class='icon-tongzhi cf'></i></div>
 				<div class='ex h60 ml10 mr20'>4564</div>
@@ -29,6 +29,7 @@
 			<p>关于诺森医学检验</p>
 			<p style='margin-left:70px'>联系电话 100-0000</p>
 		</footer>
+        <Charge ref='c' />
 	</Content>
 </template>
 
@@ -64,6 +65,7 @@
 			Img: 		() => import('@cpx/img'),
 			Content: 	() => import('@cpx/content'),
 			User: 		() => import('@tp/user'),
+            Charge: 		() => import('@tp/charge'),
 		},
 		data(){
 			return {
@@ -78,7 +80,10 @@
 		methods:{
 			save(v){
 				console.log(v)
-			}
+			},
+            open(){
+                this.$refs.c.open()
+            }
 		}
 	}
 </script>

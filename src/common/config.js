@@ -23,3 +23,5 @@ module.exports = {
 	contentType: 1,
     pageSize: 20
 }
+
+// test.norsonmed.com:880 测试地址

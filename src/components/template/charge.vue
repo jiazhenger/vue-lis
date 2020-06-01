@@ -1,10 +1,10 @@
-<template>  
+<template>
 	<Dialog ref='dialog' title='收费' width='60%' class='fxmc'>
 		<!-- 物价列表 -->
 		<Title title='物价列表' class='mb10'/>
 		<Box>
 			<header class='p10 bbor1'>
-				<Form :inline='true' :model='model' @submit='submit'>
+				<el-form :inline='true' :model='model' @submit='submit'>
 					<FormItem label='物价名称'>
     					<Input v-model='model.item_name' p='输入物价名称' @clear='submit' :disabled='pagingLoading'/>
   					</FormItem>
@@ -14,7 +14,7 @@
   					<FormItem>
     					<Button label='搜索' icon='el-icon-search' native-type='submit'  @click='submit($event)' :loading='pagingLoading'/>
   					</FormItem>
-				</Form>
+				</el-form>
 			</header>
 			<Table ref='list' :data='data' :col='col' @select='onSelect' :pag='pag' :loading='pagingLoading'/>
 		</Box>
@@ -22,13 +22,13 @@
 		<Title title='已选物价' class='mtb10'/>
 		<Box class='oh'>
 			<Table :data='data2' :col='col2' :height='200' emptyText='请先选择物价'>
-				<el-table-column label='操作' align='center' width='120'>
-					<template slot-scope='scope'>
-						<Popconfirm @yes='onYes()'>
-							<Button label='删除' icon='el-icon-delete' type='danger'  @click='onDel(scope)' slot='reference' />
-						</Popconfirm>
-					</template>
-				</el-table-column>
+                <el-table-column label='操作' align='center' width='120'>
+                    <template slot-scope='scope'>
+                        <Popconfirm @yes='onYes()'>
+                            <Button label='删除' icon='el-icon-delete' type='danger'  @click='onDel(scope)' slot='reference' />
+                        </Popconfirm>
+                    </template>
+                </el-table-column>
 			</Table>
 			<dl class='fx h30 tc' v-if='data2.length>0'>
 				<dt style='width:40%'>总计</dt>
@@ -51,26 +51,25 @@
 	// ================================================================  class
 	export default {
 		components:{
-			Box			: ()=>import('@cpx/box-1'),
-			Title		: ()=>import('@cpt/title'),
-			Dialog		: ()=>import('@cpt/ui/dialog'),
-			Form		: ()=>import('@cpt/ui/form'),
-			FormItem	: ()=>import('@cpt/ui/form-item'),
-			Input		: ()=>import('@cpt/ui/input'),
-			Button		: ()=>import('@cpt/ui/button'),
-			Table		: ()=>import('@cpt/table-simple'),
-			Col			: ()=>import('@cpt/ui/table-col'),
-			Popconfirm	: ()=>import('@cpt/ui/popconfirm')
+			Box			: ()=>import('@tp/box'),
+			Title		: ()=>import('@tp/title'),
+			Dialog		: ()=>import('@eu/dialog'),
+			FormItem	: ()=>import('@eu/form-item'),
+			Input		: ()=>import('@eu/input'),
+			Button		: ()=>import('@eu/button'),
+			Table		: ()=>import('@eu/cpt/table'),
+			Col			: ()=>import('@eu/table-col'),
+			Popconfirm	: ()=>import('@eu/popconfirm')
 		},
 		props:{
-			
+
 		},
 		data(){
 			return {
 				fn:$fn,
 				index:0,
 				model:{
-					
+
 				},
 				total:'0.00',
 				data:[],
@@ -86,7 +85,7 @@
 		        	{ prop:'price_code', 	label:'物价代码'},
 		        	{ prop:'price', 		label:'参考价' }
 		        ],
-		        pag:{ 
+		        pag:{
 		        	small:true,
 		        	change: v => this.fetch(v)
 		        },
@@ -115,7 +114,7 @@
 			},
 			// 删除选择数据
 			onDel(scope){ this.index = scope.$index },
-			onYes(){ 
+			onYes(){
 				this.data2.splice(this.index,1);
 				this.sum()
 //				this.$refs.list.addRows(this.data2)
@@ -131,7 +130,7 @@
 				this.total = this.total.toFixed(2)
 			},
 			// 保存
-			save(){ 
+			save(){
 				this.$emit('save',this.total)
 				this.close()
 			}

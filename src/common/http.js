@@ -328,10 +328,10 @@ const paging = (_this,api,option)=>{
 			resetData   : true,
 			dataName    : null
 		}).then(data=>{
-            const result = data.data
+            const result = data.items
 			_this[opt.pag] = {
 				..._this[opt.pag],
-				current		: +data.current_page, 		// 当前页码
+				current		: +data.current, 		// 当前页码
 				total		: +data.total,		        // 总共多少条数据
 				totalPage	: +data.total_pages,		// 总共多少页
 				pageSize	: +data.per_page,			// 每页显示多少条数据

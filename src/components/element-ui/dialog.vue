@@ -7,6 +7,7 @@
 		top						= '0'
 		center
 		destroy-on-close
+        append-to-body
 	>
 		<slot></slot>
 	</el-dialog>
@@ -24,7 +25,7 @@
 		},
 		data(){
 			return {
-				show:true
+				show:false
 			}
 		},
 		mounted(){

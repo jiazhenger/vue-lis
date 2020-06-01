@@ -11,7 +11,7 @@
 		@change 			= 'onChange'
         @onRowClick         = 'onRowClick'
 	>
-        <slot></slot>
+        
 		<template v-for	= '(v,i) in col'>
 			<Col
 				:prop	= 'v.prop'
@@ -22,6 +22,8 @@
                 :fixed  = 'v.fixed'
 			/>
 		</template>
+        <slot></slot>
+        <template slot='pleft'><slot name='pleft' /></template>
 	</Table>
 </template>
 
@@ -54,7 +56,11 @@
 			},
 			onChange(v){ this.$emit('change',v)},
              // 点击行触发
-            onRowClick(v){ this.$emit('onRowClick',v)}
+            onRowClick(v){ this.$emit('onRowClick',v)},
+            // 重置滚动条
+            reset(){
+                this.$refs.table && this.$refs.table.reset()
+            }
 		}
 	}
 </script>
