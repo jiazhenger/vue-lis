@@ -16,7 +16,7 @@
     "@grapecity/activereports": "^1.2.0",
     "@grapecity/activereports-localization": "^1.2.0",
     "@grapecity/activereports-vue": "^1.2.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "element-ui": "^2.13.1",
     "vue": "^2.6.11",
     "vue-router": "^3.0.1"
